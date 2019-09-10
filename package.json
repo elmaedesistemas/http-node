@@ -1,0 +1,37 @@
+{
+  "name": "http-node",
+  "version": "0.1.0",
+  "description": "A simple chat like telegram but much better",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coffescript/http-node.git"
+  },
+  "keywords": [
+    "chat",
+    "telegram",
+    "server",
+    "node",
+    "express",
+    "sockets",
+    "npm"
+  ],
+  "author": "Deiby Mejia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coffescript/http-node/issues"
+  },
+  "homepage": "https://github.com/coffescript/http-node#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.2",
+    "standard": "^14.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.0"
+  }
+}
