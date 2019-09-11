@@ -1,9 +1,10 @@
 'use strict'
 
 const store = require('./store')
+const socket = require('../../socket').socket
 
 const addMessages = (chat, user, message) => {
-return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     if (!chat || !user || !message) {
       console.error('[MESSAGE_CONTROLLER] The user, chat or message not exist.')
       reject('Wrong Data! :(')
@@ -12,7 +13,7 @@ return new Promise((resolve, reject) => {
 
     let fileUrl = ''
     if (file) {
-        fileUrl = `http://127.0.0.1:3000/app/files/${file.filename}`
+      fileUrl = `http://127.0.0.1:3000/app/files/${file.filename}`
     }
 
     const fullMessage = {
@@ -24,6 +25,7 @@ return new Promise((resolve, reject) => {
     }
 
     store.add(fullMessage)
+    socket.emit('message', fullMessage)
     resolve(fullMessage)
   })
 }

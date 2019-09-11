@@ -1,22 +1,25 @@
 'use strict'
 
 const express = require('express')
+const app = express()
+const server = require('http').Server(app)
+
+const cors = require('cors')
 const bodyParser = require('body-parser')
-
 const db = require('./db')
-
-// const router = require('./components/messages/network')
 const routes = require('./network/routes')
+const socket = require('./socket')
 
 db('mongodb+srv://dmejia:carpeDiem1204@telegram-buiqg.mongodb.net/test?retryWrites=true&w=majority')
 
-const app = express()
+app.use(cors())
 app.use(bodyParser.json())
-// app.use(routes)
 
+socket.connect(server)
 routes(app)
 
 app.use('/app', express.static('public'))
 
-app.listen(3000)
-console.log('The application is listen in http://127.0.0.1:3000')
+server.listen(3001, () => {
+  console.log('The application is listen in http://127.0.0.1:3000')    
+})
